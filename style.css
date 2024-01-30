@@ -38,6 +38,10 @@ body{
 
 .input_items{
     display: flex;
+    margin-bottom: 10px;
+}
+
+.item_group{
     margin-bottom: 50px;
 }
 
@@ -48,7 +52,7 @@ body{
 /* 名前入力欄 */
 .input_name{
     display: flex;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
 }
 
 .input_name_items{
@@ -62,12 +66,15 @@ body{
 /* 住所入力欄 */
 .input_address{
     width: 80%;
+    margin-bottom: 30px;
 }
 
 .input_address_items{
     display: flex;
+    margin-bottom: 10px;
 }
-.input_address_items:first-child{
+
+.address_indi{
     margin-bottom: 20px;
 }
 
@@ -100,6 +107,22 @@ body{
 
 .member_regi_submit input:hover{
     cursor: pointer;
+}
+
+/* エラーメッセージ */
+.indi{
+    color:red;
+    margin-left: 40%;
+}
+
+.indi_sub{
+    margin-left: 20%;
+}
+
+.name_indi{
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
 }
 
 /* 登録確認画面 */

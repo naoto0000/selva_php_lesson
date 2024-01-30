@@ -19,16 +19,10 @@ if (isset($_SESSION['first_name']) && isset($_SESSION['second_name'])) {
     $name = $_SESSION['first_name'].$_SESSION['second_name'];
 }
 
-if ($_SESSION['gender'] == 1) {
-    $gender = "男性";
-} elseif ($_SESSION['gender'] == 2) {
-    $gender = "女性";
-}
-
 if (isset($_SESSION['pref']) && isset($_SESSION['address'])) {
     foreach ($prefCotegory as $pref) {
         if ($_SESSION['pref'] == $pref['value']) {
-            $address_pref = $pref['text'];
+            $address_pref = $pref['value'];
         }
     }
     $address = $address_pref.$_SESSION['address'];
@@ -57,7 +51,7 @@ if (isset($_SESSION['pref']) && isset($_SESSION['address'])) {
                 </div>
                 <div class="confirm_items">
                     <p class="sub_title">性別</p>
-                    <p class="confirm_item_contents"><?php echo $gender ?></p>
+                    <p class="confirm_item_contents"><?php echo $_SESSION['gender'] ?></p>
                 </div>
                 <div class="confirm_items">
                     <p class="sub_title">住所</p>
