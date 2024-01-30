@@ -1,0 +1,152 @@
+/* 共通部分 */
+body,p,ul,td,th{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: rgb(196, 229, 236);
+}
+
+.container{
+    margin: 50px 30%;
+}
+
+.main_title{
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 35px;
+}
+
+
+/* 会員登録画面 */
+/* =========== */
+
+/* 共通部分 */
+.sub_title{
+    font-size: 27px;
+    width: 40%;
+}
+
+.sub_title_address{
+    font-size: 20px;
+}
+
+.item_label{
+    font-size: 20px;
+}
+
+.input_items{
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.sub_group{
+    width: 20%;
+}
+
+/* 名前入力欄 */
+.input_name{
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.input_name_items{
+    align-items: center;
+    margin-right: 10px;
+}
+.input_name_items input{
+    height: 100%;
+}
+
+/* 住所入力欄 */
+.input_address{
+    width: 80%;
+}
+
+.input_address_items{
+    display: flex;
+}
+.input_address_items:first-child{
+    margin-bottom: 20px;
+}
+
+
+.sub_title_address{
+    width: 40%;
+}
+
+.sub_address_input{
+    width: 60%;
+}
+
+/* パスワード、メールアドレス入力欄 */
+.regi_input{
+    width: 60%;
+}
+
+/* 登録ボタン */
+.member_regi_submit{
+    text-align: center;
+}
+
+.member_regi_submit input {
+    font-size: 25px;
+    color: white;
+    background-color: blue;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.member_regi_submit input:hover{
+    cursor: pointer;
+}
+
+/* 登録確認画面 */
+/* =========== */
+
+.confirm_items{
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.confirm_item_contents{
+    width: 60%;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.member_confirm_btn{
+    text-align: center;
+}
+
+.member_confirm_submit{
+    font-size: 25px;
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+    background-color: blue;
+    margin-bottom: 20px;
+}
+
+.member_confirm_submit:hover{
+    cursor: pointer;
+}
+
+.member_confirm_back_submit{
+    font-size: 25px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.member_confirm_back_submit:hover{
+    cursor: pointer;
+}
+
+/* 登録完了画面 */
+.complete_text{
+    text-align: center;
+    margin-top: 120px;
+    font-size: 22px;
+}
