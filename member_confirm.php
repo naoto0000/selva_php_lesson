@@ -3,6 +3,43 @@ require_once("function.php");
 require_once("pref_cotegory.php");
 
 if (isset($_POST['member_confirm_submit'])) {
+
+    if ($_POST['token'] !== "" && $_POST['token'] == $_SESSION["token"]) {
+
+        if ($_SESSION['gender'] == "男性") {
+            $insert_gender = 1;
+        } elseif ($_SESSION['gender'] == "女性") {
+            $insert_gender = 2;
+        }
+
+        date_default_timezone_set('Asia/Tokyo');
+        $created_at = date('Y:m:d H:i:s');
+
+        $sql = 'INSERT INTO `members` 
+        (`name_sei`, `name_mei`, `gender`, `pref_name`, `address`, `password`, `email`, `created_at`, `updated_at`) 
+        VALUES (:name_sei, :name_mei, :gender, :pref_name, :address, :password, :email, :created_at, :updated_at)';
+
+        try {
+            $stmt = $pdo->prepare($sql);
+
+            $stmt->execute([
+                ':name_sei' => $_SESSION['first_name'],
+                ':name_mei' => $_SESSION['second_name'],
+                ':gender' => $insert_gender,
+                ':pref_name' => $_SESSION['pref'],
+                ':address' => $_SESSION['address'],
+                ':password' => $_SESSION['password'],
+                ':email' => $_SESSION['mail'],
+                ':created_at' => $created_at,
+                ':updated_at' => $created_at
+            ]);
+
+            echo "登録しました";
+        } catch (PDOException $e) {
+            echo "エラーが発生しました: " . $e->getMessage();
+        }
+    }
+
     header('Location: member_complete.php');
     exit();
 } elseif (isset($_POST['member_confirm_back_submit'])) {
@@ -16,7 +53,7 @@ $address_pref = "";
 $address = "";
 
 if (isset($_SESSION['first_name']) && isset($_SESSION['second_name'])) {
-    $name = $_SESSION['first_name'].$_SESSION['second_name'];
+    $name = $_SESSION['first_name'] . $_SESSION['second_name'];
 }
 
 if (isset($_SESSION['pref']) && isset($_SESSION['address'])) {
@@ -25,8 +62,11 @@ if (isset($_SESSION['pref']) && isset($_SESSION['address'])) {
             $address_pref = $pref['value'];
         }
     }
-    $address = $address_pref.$_SESSION['address'];
+    $address = $address_pref . $_SESSION['address'];
 }
+
+//トークンをセッション変数にセット
+$_SESSION["token"] = $token = mt_rand();
 
 ?>
 
@@ -68,6 +108,8 @@ if (isset($_SESSION['pref']) && isset($_SESSION['address'])) {
             </div>
 
             <form action="" method="post">
+                <input type="hidden" name="token" value="<?php echo $token; ?>">
+
                 <div class="member_confirm_btn">
                     <input type="submit" name="member_confirm_submit" value="登録完了" class="member_confirm_submit">
                 </div>

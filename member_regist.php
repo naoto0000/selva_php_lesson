@@ -2,6 +2,16 @@
 require_once("function.php");
 require_once("pref_cotegory.php");
 
+try{
+    $mail_sql = "SELECT email FROM members";
+    $mail_stmt = $pdo->prepare($mail_sql);
+    $mail_stmt->execute();
+}catch(PDOException $e){
+    echo $e->getMessage();
+}
+// 取得できたデータを変数に入れておく
+$mail_match_row = $mail_stmt->fetchAll(PDO::FETCH_ASSOC);
+
 if (isset($_POST['member_regi_submit'])) {
 
     function validate(array $post_data)
@@ -81,6 +91,18 @@ if (isset($_POST['member_regi_submit'])) {
         $mail_check = preg_match("/^[a-zA-Z0-9]+([a-zA-Z0-9._-]{0,198})@[a-zA-Z0-9_-]+([a-zA-Z0-9._-]+)+$/", $post_data['mail']);
         if ($mail_check === 0) {
             $_SESSION['validation_errors']['mail_check'] = true;
+        }
+
+        // メールアドレスの重複チェック
+        global $mail_match_row;
+
+        foreach ($mail_match_row as $mail_match) {
+            if ($mail_match['email'] == $post_data['mail']) {
+                $mail_match_result = 1;
+            }
+        }
+        if ($mail_match_result === 1) {
+            $_SESSION['validation_errors']['mail_match'] = true;
         }
     }
 
@@ -303,9 +325,14 @@ function initializeValidationErrors($key)
                             echo "※メールアドレスは入力必須です";
                             initializeValidationErrors('mail');
                             initializeValidationErrors('mail_check');
+                            initializeValidationErrors('mail_match');
                         } elseif (isset($_SESSION['validation_errors']['mail_check']) && $_SESSION['validation_errors']['mail_check']) {
                             echo "※メールアドレスの形式で入力してください";
                             initializeValidationErrors('mail_check');
+                            initializeValidationErrors('mail_match');
+                        } elseif (isset($_SESSION['validation_errors']['mail_match']) && $_SESSION['validation_errors']['mail_match']) {
+                            echo "※このメールアドレスは既に使用されています";
+                            initializeValidationErrors('mail_match');
                         }
                         ?>
                     </span>
