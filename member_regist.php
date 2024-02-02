@@ -10,15 +10,14 @@ $post_items = isset($_SESSION['input_items']) ? $_SESSION['input_items'] : [];
 unset($_SESSION['input_items']);
 
 
-    if (isset($_POST['member_regi_submit'])) {
+if (isset($_POST['member_regi_submit'])) {
 
-        header('Location: member_confirm.php');
-        exit();
-
-    } elseif (isset($_POST['member_regi_back_submit'])) {
-        header('Location: index.php');
-        exit();
-    }
+    header('Location: member_confirm.php');
+    exit();
+} elseif (isset($_POST['member_regi_back_submit'])) {
+    header('Location: index.php');
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -240,7 +239,8 @@ unset($_SESSION['input_items']);
                         <input type="submit" name="member_regi_submit" value="確認画面へ" class="member_regi_btn">
                     </div>
                     <div class="regi_btn">
-                        <input type="submit" name="member_regi_back_submit" value="トップに戻る" class="member_confirm_back_submit">
+                        <button type="button" onclick="location.href='index.php'" class="btn">トップに戻る</button>
+                        <!-- <input type="submit" name="member_regi_back_submit" value="トップに戻る" class="member_confirm_back_submit"> -->
                     </div>
                 </div>
             </form>

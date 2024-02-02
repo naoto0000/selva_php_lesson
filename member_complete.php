@@ -13,6 +13,8 @@ if ($_POST['token'] !== "" && $_POST['token'] == $_SESSION["token"]) {
     date_default_timezone_set('Asia/Tokyo');
     $created_at = date('Y:m:d H:i:s');
 
+    $hashed_pass = password_hash($_SESSION['input_items']['password'], PASSWORD_DEFAULT);
+
     $sql = 'INSERT INTO `members` 
 (`name_sei`, `name_mei`, `gender`, `pref_name`, `address`, `password`, `email`, `created_at`, `updated_at`) 
 VALUES (:name_sei, :name_mei, :gender, :pref_name, :address, :password, :email, :created_at, :updated_at)';
@@ -26,12 +28,12 @@ VALUES (:name_sei, :name_mei, :gender, :pref_name, :address, :password, :email, 
             ':gender' => $insert_gender,
             ':pref_name' => $_SESSION['input_items']['pref'],
             ':address' => $_SESSION['input_items']['address'],
-            ':password' => $_SESSION['input_items']['password'],
+            ':password' => $hashed_pass,
             ':email' => $_SESSION['input_items']['mail'],
             ':created_at' => $created_at,
             ':updated_at' => $created_at
         ]);
-        
+
         $_SESSION = array(); //セッションの中身をすべて削除
         session_destroy(); //セッションを破壊
 

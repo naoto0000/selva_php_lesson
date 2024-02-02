@@ -1,125 +1,138 @@
 /* 共通部分 */
-body,p,ul,td,th{
+body,
+p,
+ul,
+td,
+th {
     margin: 0;
     padding: 0;
 }
 
-body{
+a {
+    text-decoration: none;
+}
+
+body {
     background-color: rgb(196, 229, 236);
 }
 
-.container{
+.container {
     margin: 50px 30%;
 }
 
-.main_title{
+.main_title {
     text-align: center;
     margin-bottom: 40px;
     font-size: 35px;
 }
 
-
 /* 会員登録画面 */
 /* =========== */
 
 /* 共通部分 */
-.sub_title{
+.sub_title {
     font-size: 27px;
     width: 40%;
 }
 
-.sub_title_address{
+.sub_title_address {
     font-size: 20px;
 }
 
-.item_label{
+.item_label {
     font-size: 20px;
 }
 
-.input_items{
+.input_items {
     display: flex;
     margin-bottom: 10px;
 }
 
-.item_group{
+.item_group {
     margin-bottom: 50px;
 }
 
-.sub_group{
+.sub_group {
     width: 20%;
 }
 
 /* 名前入力欄 */
-.input_name{
+.input_name {
     display: flex;
     margin-bottom: 10px;
 }
 
-.input_name_items{
+.input_name_items {
     align-items: center;
     margin-right: 10px;
 }
-.input_name_items input{
+
+.input_name_items input {
     height: 100%;
 }
 
 /* 住所入力欄 */
-.input_address{
+.input_address {
     width: 80%;
     margin-bottom: 30px;
 }
 
-.input_address_items{
+.input_address_items {
     display: flex;
     margin-bottom: 10px;
 }
 
-.address_indi{
+.address_indi {
     margin-bottom: 20px;
 }
 
 
-.sub_title_address{
+.sub_title_address {
     width: 40%;
 }
 
-.sub_address_input{
+.sub_address_input {
     width: 60%;
 }
 
 /* パスワード、メールアドレス入力欄 */
-.regi_input{
+.regi_input {
     width: 60%;
 }
 
 /* 登録ボタン */
-.member_regi_submit{
+.member_regi_submit {
     text-align: center;
 }
 
-.member_regi_submit input {
+.regi_btn {
+    margin-bottom: 20px;
+}
+
+.member_regi_btn {
     font-size: 25px;
     color: white;
     background-color: blue;
     border-radius: 5px;
     padding: 5px;
+    width: 162px;
 }
 
-.member_regi_submit input:hover{
+.member_regi_submit input:hover {
     cursor: pointer;
 }
 
 /* エラーメッセージ */
-.indi{
-    color:red;
+.indi {
+    color: red;
     margin-left: 40%;
 }
 
-.indi_sub{
+.indi_sub {
     margin-left: 20%;
 }
 
-.name_indi{
+.name_indi {
     display: flex;
     flex-direction: column;
     padding-top: 10px;
@@ -128,23 +141,23 @@ body{
 /* 登録確認画面 */
 /* =========== */
 
-.confirm_items{
+.confirm_items {
     display: flex;
     margin-bottom: 50px;
 }
 
-.confirm_item_contents{
+.confirm_item_contents {
     width: 60%;
     font-size: 20px;
     display: flex;
     align-items: center;
 }
 
-.member_confirm_btn{
+.member_confirm_btn {
     text-align: center;
 }
 
-.member_confirm_submit{
+.member_confirm_submit {
     font-size: 25px;
     border-radius: 5px;
     padding: 5px;
@@ -153,23 +166,105 @@ body{
     margin-bottom: 20px;
 }
 
-.member_confirm_submit:hover{
+.member_confirm_submit:hover {
     cursor: pointer;
 }
 
-.member_confirm_back_submit{
+.member_confirm_back_submit {
     font-size: 25px;
     border-radius: 5px;
     padding: 5px;
 }
 
-.member_confirm_back_submit:hover{
+.member_confirm_back_submit:hover {
     cursor: pointer;
 }
 
 /* 登録完了画面 */
-.complete_text{
+/* =========== */
+.complete_text {
     text-align: center;
     margin-top: 120px;
     font-size: 22px;
 }
+
+.complete_btn{
+    text-align: center;
+    margin-top: 100px;
+}
+
+.member_complete_btn {
+    color: white;
+    background-color: blue;
+    font-size: 25px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.member_complete_btn:hover{
+    cursor: pointer;
+}
+
+/* トップ画面 */
+/* ========= */
+
+header {
+    background-color: antiquewhite;
+    height: 80px;
+}
+
+.header_name{
+    padding-left: 10px;
+}
+
+.header_link {
+    color: white;
+    text-align: right;
+    align-items: center;
+    padding-right: 60px;
+}
+
+.header_login_group {
+    padding-top: 20px;
+}
+
+.login_btn {
+    margin-top: 60px;
+}
+
+.login_submit {
+    width: 162px;
+}
+
+.btn {
+    padding: 10px 30px;
+    background: antiquewhite;
+    color: black;
+    margin-right: 15px;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+
+/* ログイン画面 */
+/* =========== */
+.login_input {
+    padding-top: 30px;
+}
+
+.login_items {
+    display: flex;
+    margin-bottom: 20px;
+    height: 40px;
+}
+
+.login_items p {
+    width: 40%;
+}
+
+.login_items input {
+    width: 60%;
+}
+
