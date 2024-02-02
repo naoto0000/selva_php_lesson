@@ -11,4 +11,10 @@ try {
     echo $e->getMessage();
 }
 
+function initializeValidationErrors($key)
+{
+    $validation[$key] = "";
+}
+
+
 ?>
