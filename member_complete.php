@@ -1,7 +1,6 @@
 <?php
 require_once("function.php");
 
-
 if ($_POST['token'] !== "" && $_POST['token'] == $_SESSION["token"]) {
 
     if ($_SESSION['input_items']['gender'] == "男性") {

@@ -15,6 +15,4 @@ function initializeValidationErrors($key)
 {
     $validation[$key] = "";
 }
-
-
 ?>

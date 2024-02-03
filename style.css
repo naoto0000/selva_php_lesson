@@ -247,7 +247,6 @@ header {
     cursor: pointer;
 }
 
-
 /* ログイン画面 */
 /* =========== */
 .login_input {
@@ -268,3 +267,53 @@ header {
     width: 60%;
 }
 
+/* スレッド登録画面 */
+/* ============== */
+
+.thread_items{
+    display: flex;
+    margin-bottom: 40px;
+}
+
+.thread_items p{
+    width: 40%;
+    font-size: 26px;
+}
+
+.thread_item{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+.thread_indi{
+    margin-left: 0;
+}
+
+.back_btn{
+    width: 162px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: white;
+    color: blue;
+    padding: 5px;
+    margin-right: 0;
+    font-size: 23px;
+}
+
+/* スレッド確認画面 */
+/* ============= */
+
+.thread_input_group {
+    width: 100%;
+}
+
+.thread_confirm_contents{
+    font-size: 15px;
+    width: 60%;
+    overflow-wrap: break-word;
+}
+
+.thread_confirm_btn{
+    width: 185px;
+}

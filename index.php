@@ -21,6 +21,7 @@ if (isset($_POST['login_submit'])) {
     if (password_verify($login_pass, $login_result['password'])) {
 
         //DBのユーザー情報をセッションに保存
+        $_SESSION['member_id'] = $login_result['id'];
         $_SESSION['name'] = $login_result['name_sei'] . $login_result['name_mei'];
 
         $_SESSION['login'] = 1;
@@ -32,17 +33,54 @@ if (isset($_POST['login_submit'])) {
         header('Location: login.php');
         exit();
     }
+} elseif (isset($_POST['thread_confirm_submit'])) {
+    $_SESSION['login'] = 1;
 } else {
     $_SESSION['login'] = "";
 }
 
+if ($_GET['thread_login'] == 1) {
+    $_SESSION['login'] = 1;
+    $_GET['thread_login'] == "";
+}
 
 if (isset($_POST['logout'])) {
     $_SESSION['login'] = "";
 }
 
-?>
+// スレッド作成時の処理
+// =================
+if (isset($_POST['thread_confirm_submit'])) {
+    if ($_POST['token'] !== "" && $_POST['token'] == $_SESSION["token"]) {
 
+        date_default_timezone_set('Asia/Tokyo');
+        $created_at = date('Y:m:d H:i:s');
+
+        $thread_sql = 'INSERT INTO `thread` 
+    (`member_id`, `title`, `content`, `created_at`, `updated_at`) 
+    VALUES (:member_id, :title, :content, :created_at, :updated_at)';
+
+        try {
+            $thread_stmt = $pdo->prepare($thread_sql);
+
+            $thread_stmt->execute([
+                ':member_id' => $_SESSION['member_id'],
+                ':title' => $_SESSION['input_items']['thread_title'],
+                ':content' => $_SESSION['input_items']['thread_comment'],
+                ':created_at' => $created_at,
+                ':updated_at' => $created_at
+            ]);
+
+            unset($_SESSION['validation_errors']);
+            unset($_SESSION['input_items']);
+
+        } catch (PDOException $e) {
+            echo "エラーが発生しました: " . $e->getMessage();
+        }
+    }
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -60,11 +98,11 @@ if (isset($_POST['logout'])) {
             <?php if ($_SESSION['login'] == 1) : ?>
                 <p>ようこそ<?php echo $_SESSION['name']; ?>様</p>
             <?php endif; ?>
-
         </div>
         <div class="header_link">
             <form action="" method="post">
                 <?php if ($_SESSION['login'] == 1) : ?>
+                    <button type="button" onclick="location.href='thread_regist.php'" class="btn">新規スレッド作成</button>
                     <input type="submit" name="logout" class="btn logout_btn" value="ログアウト">
                 <?php else : ?>
                     <div class="header_login_group">
