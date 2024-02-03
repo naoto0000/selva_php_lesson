@@ -48,38 +48,6 @@ if (isset($_POST['logout'])) {
     $_SESSION['login'] = "";
 }
 
-// スレッド作成時の処理
-// =================
-if (isset($_POST['thread_confirm_submit'])) {
-    if ($_POST['token'] !== "" && $_POST['token'] == $_SESSION["token"]) {
-
-        date_default_timezone_set('Asia/Tokyo');
-        $created_at = date('Y:m:d H:i:s');
-
-        $thread_sql = 'INSERT INTO `thread` 
-    (`member_id`, `title`, `content`, `created_at`, `updated_at`) 
-    VALUES (:member_id, :title, :content, :created_at, :updated_at)';
-
-        try {
-            $thread_stmt = $pdo->prepare($thread_sql);
-
-            $thread_stmt->execute([
-                ':member_id' => $_SESSION['member_id'],
-                ':title' => $_SESSION['input_items']['thread_title'],
-                ':content' => $_SESSION['input_items']['thread_comment'],
-                ':created_at' => $created_at,
-                ':updated_at' => $created_at
-            ]);
-
-            unset($_SESSION['validation_errors']);
-            unset($_SESSION['input_items']);
-
-        } catch (PDOException $e) {
-            echo "エラーが発生しました: " . $e->getMessage();
-        }
-    }
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -102,10 +70,12 @@ if (isset($_POST['thread_confirm_submit'])) {
         <div class="header_link">
             <form action="" method="post">
                 <?php if ($_SESSION['login'] == 1) : ?>
+                    <button type="button" onclick="location.href='thread.php'" class="btn">スレッド一覧</button>
                     <button type="button" onclick="location.href='thread_regist.php'" class="btn">新規スレッド作成</button>
                     <input type="submit" name="logout" class="btn logout_btn" value="ログアウト">
                 <?php else : ?>
                     <div class="header_login_group">
+                        <button type="button" onclick="location.href='thread.php'" class="btn">スレッド一覧</button>
                         <button type="button" onclick="location.href='member_regist.php'" class="btn">新規会員登録</button>
                         <button type="button" onclick="location.href='login.php'" class="btn">ログイン</button>
                     </div>

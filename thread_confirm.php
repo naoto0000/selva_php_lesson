@@ -59,7 +59,7 @@ $_SESSION["token"] = $token = mt_rand();
     <div class="container">
         <h1 class="main_title">スレッド作成確認画面</h1>
 
-        <form action="index.php" method="post">
+        <form action="thread.php" method="post">
             <div class="thread_input_group">
                 <div class="thread_items">
                     <p class="thread_confirm_label">スレッドタイトル</p>

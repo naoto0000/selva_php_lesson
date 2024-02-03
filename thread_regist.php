@@ -77,7 +77,7 @@ if (isset($_POST['thread_regi_submit'])) {
                     <input type="submit" name="thread_regi_submit" value="確認画面へ" class="member_regi_btn thread_regist_btn">
                 </div>
                 <div class="regi_btn">
-                    <button type="button" onclick="location.href='index.php?thread_login=1'" class="btn back_btn">トップに戻る</button>
+                    <button type="button" onclick="location.href='thread.php'" class="btn back_btn">一覧に戻る</button>
                 </div>
             </div>
 

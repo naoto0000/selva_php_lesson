@@ -317,3 +317,37 @@ header {
 .thread_confirm_btn{
     width: 185px;
 }
+
+/* スレッド一覧画面 */
+/* ============== */
+
+.thread_display_btn{
+    margin-top: 15px;
+}
+
+.thread_search_submit{
+    text-align: center;
+}
+
+.thread_search{
+    width: 250px;
+    height: 35px;
+    margin-right: 10px;
+}
+
+.search_submit{
+    height: 35px;
+}
+
+.thread_display{
+    margin: 70px 30px 200px 30px;
+}
+
+.thread_display_items{
+    display: flex;
+}
+
+.display_item{
+    margin-right: 20px;
+    font-size: 20px;
+}
