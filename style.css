@@ -351,3 +351,38 @@ header {
     margin-right: 20px;
     font-size: 20px;
 }
+
+/* スレッド詳細画面 */
+/* ============= */
+.thread_detail_title{
+    margin-bottom: 0;
+}
+
+.detai_title_date{
+    margin-left: 70%;
+}
+
+.detail_display_header{
+    display: flex;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.detail_name{
+    margin-right: 20px;
+}
+
+.detail_content{
+    margin-left: 20px;
+}
+
+.detail_comment{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.detail_submit{
+    margin-left: 70%;
+    margin-top: 20px;
+}

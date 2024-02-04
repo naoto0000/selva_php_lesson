@@ -89,11 +89,13 @@ if (isset($_POST['thread_search_submit']) && $_POST['thread_search'] !== "") {
                     $dateTime = new DateTime($originalDate);
                     $thread_display['created_at'] = $dateTime->format('Y.n.j H:i');
                     ?>
-                    <div class="thread_display_items">
-                        <p class="display_id display_item">ID:<?php echo $thread_display['id'] ?></p>
-                        <p class="display_title display_item"><?php echo $thread_display['title'] ?></p>
-                        <p class="display_date display_item"><?php echo $thread_display['created_at'] ?></p>
-                    </div>
+                    <a href="thread_detail.php?id=<?php echo $thread_display['id'] ?>">
+                        <div class="thread_display_items">
+                            <p class="display_id display_item">ID:<?php echo $thread_display['id'] ?></p>
+                            <p class="display_title display_item"><?php echo $thread_display['title'] ?></p>
+                            <p class="display_date display_item"><?php echo $thread_display['created_at'] ?></p>
+                        </div>
+                    </a>
                 <?php endforeach; ?>
             </div>
 
