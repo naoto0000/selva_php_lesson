@@ -44,6 +44,11 @@ if ($_GET['thread_login'] == 1) {
     $_GET['thread_login'] == "";
 }
 
+if ($_GET['login'] == 1) {
+    $_SESSION['login'] = 1;
+    $_GET['login'] == "";
+}
+
 if (isset($_POST['logout'])) {
     $_SESSION['login'] = "";
 }
