@@ -35,18 +35,6 @@ if (isset($_POST['login_submit'])) {
     }
 } elseif (isset($_POST['thread_confirm_submit'])) {
     $_SESSION['login'] = 1;
-} else {
-    $_SESSION['login'] = "";
-}
-
-if ($_GET['thread_login'] == 1) {
-    $_SESSION['login'] = 1;
-    $_GET['thread_login'] == "";
-}
-
-if ($_GET['login'] == 1) {
-    $_SESSION['login'] = 1;
-    $_GET['login'] == "";
 }
 
 if (isset($_POST['logout'])) {

@@ -9,7 +9,7 @@ unset($_SESSION['login_id']);
 
 
 if ($_SESSION['login'] == 1) {
-    header('Location: index.php?login=1');
+    header('Location: index.php');
     exit();
 }
 

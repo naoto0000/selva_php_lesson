@@ -101,11 +101,7 @@ if (isset($_POST['thread_search_submit']) && $_POST['thread_search'] !== "") {
 
             <div class="member_regi_submit">
                 <div class="regi_btn">
-                    <?php if ($_SESSION['login'] == 1) : ?>
-                        <button type="button" onclick="location.href='index.php?thread_login=1'" class="btn back_btn">トップに戻る</button>
-                    <?php else : ?>
-                        <button type="button" onclick="location.href='index.php'" class="btn back_btn">トップに戻る</button>
-                    <?php endif; ?>
+                    <button type="button" onclick="location.href='index.php'" class="btn back_btn">トップに戻る</button>
                 </div>
             </div>
 
