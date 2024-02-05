@@ -57,7 +57,7 @@ foreach ($thread_detail_result as $thread_detail) {
                 <p class="detail_name">投稿者：<?php echo $detail_name; ?></p>
                 <p><?php echo $detail_date; ?></p>
             </div>
-            <p class="detail_content"><?php echo $detail_comment; ?></p>
+            <p class="detail_content"><?php echo nl2br($detail_comment); ?></p>
         </div>
 
         <?php if ($_SESSION['login'] == 1) : ?>
