@@ -119,8 +119,8 @@ $max_page = ceil($coment_count / 5);
 // いいね関連
 // ========
 //いいね数取得
-$likes_count_sql = 
-"SELECT COUNT(l.comment_id) AS like_cnt
+$likes_count_sql =
+    "SELECT COUNT(l.comment_id) as like_cnt, l.comment_id as id
 FROM likes as l
 INNER JOIN comments as c
 ON l.comment_id = c.id
@@ -242,13 +242,17 @@ while ($like_record = $like->fetch()) {
                             }
                         }
                         ?>
-                        <?php if ($my_like_cnt < 1) : ?>
+                        <?php if ($_SESSION['login'] !== 1) : ?>
+                            <a class="heart" href="member_regist.php">&#9825;</a>
+                        <?php elseif ($my_like_cnt < 1) : ?>
                             <a class="heart" href="?id=<?php echo $thread_detail_id ?>&page=<?php echo $page ?>&like=<?php echo $display_row['id'] ?>">&#9825;</a>
                         <?php else : ?>
-                            <a class="heart" href="?id=<?php echo $thread_detail_id ?>&page=<?php echo $page ?>&like=<?php echo $display_row['id'] ?>">&#9829;</a>
+                            <a class="heart pressed_heart" href="?id=<?php echo $thread_detail_id ?>&page=<?php echo $page ?>&like=<?php echo $display_row['id'] ?>">&#9829;</a>
                         <?php endif; ?>
                         <?php foreach ($likes_count_result as $like_count) : ?>
-                        <p><?php echo $like_count['like_cnt'] ?></p>
+                            <?php if ($like_count['id'] == $display_row['id']) : ?>
+                                <p><?php echo $like_count['like_cnt'] ?></p>
+                            <?php endif; ?>
                         <?php endforeach ?>
                     </div>
                 </div>

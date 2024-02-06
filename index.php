@@ -39,6 +39,8 @@ if (isset($_POST['login_submit'])) {
 
 if (isset($_POST['logout'])) {
     $_SESSION['login'] = "";
+    $_SESSION = array();
+    session_destroy();
 }
 
 ?>

@@ -413,10 +413,20 @@ header {
 
 .comment_contents{
     margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.likes_group{
+    display: flex;
 }
 
 .comment_indi{
     margin-left: 0;
+}
+
+.pressed_heart{
+    color:red;
 }
 
 /* ページネーション関連 */
