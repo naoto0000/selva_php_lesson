@@ -116,6 +116,57 @@ $coment_count = count($count_result);
 
 $max_page = ceil($coment_count / 5);
 
+// いいね関連
+// ========
+//いいね数取得
+$likes_count_sql = 
+"SELECT COUNT(l.comment_id) AS like_cnt
+FROM likes as l
+INNER JOIN comments as c
+ON l.comment_id = c.id
+GROUP BY l.comment_id";
+
+$likes_count_stmt = $pdo->prepare($likes_count_sql);
+$likes_count_stmt->execute();
+$likes_count_result = $likes_count_stmt->fetchAll(PDO::FETCH_ASSOC);
+
+//いいね済みであるか確認
+if (isset($_REQUEST['like'])) {
+
+    $pressed = $pdo->prepare('SELECT COUNT(*) AS cnt FROM likes WHERE comment_id=? AND member_id=?');
+    $pressed->execute(array(
+        $_REQUEST['like'],
+        $_SESSION['member_id']
+    ));
+    $my_like_cnt = $pressed->fetch();
+
+    //いいねのデータを挿入or削除
+    if ($my_like_cnt['cnt'] < 1) {
+        $press = $pdo->prepare('INSERT INTO likes SET comment_id=?, member_id=?');
+        $press->execute(array(
+            $_REQUEST['like'],
+            $_SESSION['member_id']
+        ));
+        header("Location: thread_detail.php?id={$thread_detail_id}&page={$page}");
+        exit();
+    } else {
+        $cancel = $pdo->prepare('DELETE FROM likes WHERE comment_id=? AND member_id=?');
+        $cancel->execute(array(
+            $_REQUEST['like'],
+            $_SESSION['member_id']
+        ));
+        header("Location: thread_detail.php?id={$thread_detail_id}&page={$page}");
+        exit();
+    }
+}
+
+//ログインしている人がいいねしたメッセージをすべて取得
+$like = $pdo->prepare('SELECT comment_id FROM likes WHERE member_id=?');
+$like->execute(array($_SESSION['member_id']));
+while ($like_record = $like->fetch()) {
+    $my_like[] = $like_record;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -177,7 +228,29 @@ $max_page = ceil($coment_count / 5);
                     <p><?php echo $display_row['created_at'] ?></p>
                 </div>
                 <div class="comment_contents">
-                    <p><?php echo $display_row['comment'] ?></p>
+                    <p><?php echo nl2br($display_row['comment']) ?></p>
+                    <div class="likes_group">
+                        <?php
+                        $my_like_cnt = 0;
+                        if (!empty($my_like)) {
+                            foreach ($my_like as $like_post) {
+                                foreach ($like_post as $like_post_id) {
+                                    if ($like_post_id == $display_row['id']) {
+                                        $my_like_cnt = 1;
+                                    }
+                                }
+                            }
+                        }
+                        ?>
+                        <?php if ($my_like_cnt < 1) : ?>
+                            <a class="heart" href="?id=<?php echo $thread_detail_id ?>&page=<?php echo $page ?>&like=<?php echo $display_row['id'] ?>">&#9825;</a>
+                        <?php else : ?>
+                            <a class="heart" href="?id=<?php echo $thread_detail_id ?>&page=<?php echo $page ?>&like=<?php echo $display_row['id'] ?>">&#9829;</a>
+                        <?php endif; ?>
+                        <?php foreach ($likes_count_result as $like_count) : ?>
+                        <p><?php echo $like_count['like_cnt'] ?></p>
+                        <?php endforeach ?>
+                    </div>
                 </div>
             </div>
         <?php endforeach; ?>
