@@ -358,14 +358,25 @@ header {
     margin-bottom: 0;
 }
 
+.detail_sub{
+    display: flex;
+    margin-left: 250px;
+}
+
 .detai_title_date{
-    margin-left: 70%;
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+
+.detail_display{
+    border: solid 2px blue;
+    border-radius: 5px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .detail_display_header{
     display: flex;
-    margin-top: 50px;
-    margin-bottom: 30px;
 }
 
 .detail_name{
@@ -373,7 +384,7 @@ header {
 }
 
 .detail_content{
-    margin-left: 20px;
+    margin: 20px;
 }
 
 .detail_comment{
@@ -385,4 +396,36 @@ header {
 .detail_submit{
     margin-left: 70%;
     margin-top: 20px;
+}
+
+/* コメント表示 */
+.display_comments{
+    border-bottom: solid 1px #bbbbbb;
+}
+
+.comment_title{
+    display: flex;
+}
+
+.comment_title p{
+    margin-right: 10px;
+}
+
+.comment_contents{
+    margin-bottom: 20px;
+}
+
+.comment_indi{
+    margin-left: 0;
+}
+
+/* ページネーション関連 */
+.pagenation{
+    display: flex;
+    justify-content: space-between;
+    background-color: #bbbbbb;
+}
+
+.page_a {
+    color: gray;
 }
