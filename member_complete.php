@@ -44,7 +44,7 @@ VALUES (:name_sei, :name_mei, :gender, :pref_name, :address, :password, :email, 
 session_start();
 
 if (isset($_POST['member_regi_back_submit'])) {
-    $_SESSION['login'] = 1;
+    // $_SESSION['login'] = 1;
     header('Location: index.php');
     exit();
 }

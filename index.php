@@ -5,7 +5,7 @@ if (isset($_POST['login_submit'])) {
     $login_mail = $_SESSION['login_id'] = $_POST['login_id'];
     $login_pass = $_SESSION['login_pass'] = $_POST['login_pass'];
 
-    $login_sql = "SELECT * FROM members WHERE email = :email";
+    $login_sql = "SELECT * FROM members WHERE email = :email AND deleted_at IS NULL";
     $login_stmt = $pdo->prepare($login_sql);
     $login_stmt->bindValue(':email', $login_mail, PDO::PARAM_STR);
     $login_stmt->execute();
@@ -78,6 +78,12 @@ if (isset($_POST['logout'])) {
             </form>
         </div>
     </header>
+
+    <footer>
+        <?php if ($_SESSION['login'] == 1) : ?>
+            <button type="button" onclick="location.href='member_withdrawal.php'" class="btn footer_btn">退会</button>
+        <?php endif; ?>
+    </footer>
 </body>
 
 </html>
