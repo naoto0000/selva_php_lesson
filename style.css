@@ -474,3 +474,35 @@ footer{
     margin-top: 80px;
     margin-bottom: 60px;
 }
+
+/* 管理画面 */
+/* ======= */
+.admin_header{
+    background-color: #bbbbbb;
+    display: flex;
+    justify-content: space-between;
+}
+
+.admin_header_left h2{
+    margin-top: 0;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+.admin_header_right{
+    display: flex;
+    margin-right: 50px;
+    align-items: center;
+}
+
+.admin_header_right p{
+    margin-right: 20px;
+}
+
+.admin_header_right input{
+    background-color: #bbbbbb;
+}
+
+.admin_indi{
+    margin-left: 20%;
+}
