@@ -506,3 +506,95 @@ footer{
 .admin_indi{
     margin-left: 20%;
 }
+
+.member_display_btn{
+    text-align: center;
+}
+
+.member_btn{
+    background-color: white;
+    color: blue;
+    border: solid;
+    border-radius: 5px;
+    margin-top: 200px;
+    font-size: 25px;
+}
+
+.member_back_btn {
+    background: #bbbbbb;
+}
+
+table{
+    border: solid 2px black;
+    border-spacing: 0;
+    width: 100%;
+}
+
+tr, th, td{
+    border: solid 0.3px black;
+    padding: 10px;
+    font-size: 13px;
+}
+
+td{
+    text-align: center;
+}
+
+.member_search_category, th{
+    background-color: #bbbbbb;
+}
+
+.member_search_category{
+    width: 30%;
+    text-align: left;
+}
+
+.member_search_contents{
+    width: 70%;
+}
+
+.member_pref{
+    width: 38%;
+}
+
+.member_search_btn{
+    text-align: center;
+    margin: 40px 0;
+}
+
+.member_search_submit{
+    font-size: 25px;
+    background: white;
+    color: blue;
+    border: solid 2px blue;
+    border-radius: 5px;
+}
+
+.search_order_submit{
+    background: #bbbbbb;
+    border: none;
+}
+
+.member_pagenation {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.member_pagenation a{
+    border: solid 1px black;
+    background-color: white;
+}
+
+.now_page_number{
+    border: solid 1px black;
+    background-color: #666666;
+    color: white;
+}
+
+.page_a_back{
+    margin-right: 10px;
+}
+
+.page_a_next{
+    margin-left: 10px;
+}
