@@ -50,8 +50,14 @@ if (isset($_POST['admin_login_submit'])) {
 }
 
 if (isset($_POST['admin_logout'])) {
-    $_SESSION['admin_login'] = "";
+    $_SESSION = array(); //セッションの中身をすべて削除
+    session_destroy(); //セッションを破壊
+    
+    header('Location: login.php');
+    exit();
+}
 
+if ($_SESSION['admin_login'] == "") {
     header('Location: login.php');
     exit();
 }
@@ -79,6 +85,10 @@ if (isset($_POST['admin_logout'])) {
             </div>
         </header>
     </form>
+
+    <div class="member_display_btn">
+        <button type="button" onclick="location.href='member.php'" class="btn member_btn">会員一覧</button>
+    </div>
 </body>
 
 </html>
