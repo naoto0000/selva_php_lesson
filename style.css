@@ -598,3 +598,26 @@ td{
 .page_a_next{
     margin-left: 10px;
 }
+
+.admin_regist_btn{
+    font-size: 25px;
+    background: blue;
+    color: white;
+    border: solid 2px blue;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.edit_id{
+    font-size: 20px;
+    padding-top: 5px;
+}
+
+.member_confirm_back{
+    font-size: 25px;
+    border-radius: 5px;
+    padding: 5px;
+    color: blue;
+    background-color: white;
+    margin-bottom: 20px;
+}

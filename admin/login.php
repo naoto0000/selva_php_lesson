@@ -7,7 +7,6 @@ unset($_SESSION['admin_login_error']);
 $admin_login_id_input = isset($_SESSION['admin_login_id']) ? $_SESSION['admin_login_id'] : '';
 unset($_SESSION['admin_login_id']);
 
-
 if (isset($_POST['admin_login_submit'])) {
     header('Location: index.php');
     exit();
