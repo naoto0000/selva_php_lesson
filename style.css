@@ -621,3 +621,16 @@ td{
     background-color: white;
     margin-bottom: 20px;
 }
+
+.member_detail_btn{
+    font-size: 25px;
+    border-radius: 5px;
+    padding: 5px 35px;
+    color: blue;
+    background-color: white;
+    margin-bottom: 20px;
+}
+
+.member_detail_btn:first-child{
+    margin-right: 20px;
+}

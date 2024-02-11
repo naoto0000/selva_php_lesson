@@ -142,6 +142,7 @@ $_SESSION['member_edit'] = "";
                                 <th>住所</th>
                                 <th>登録日時<input type="submit" name="search_order_submit" value="▼" class="search_order_submit"></th>
                                 <th>編集</th>
+                                <th>詳細</th>
                             </tr>
                         <?php endif; ?>
                         <?php foreach ($display_result as $display_items) : ?>
@@ -160,11 +161,12 @@ $_SESSION['member_edit'] = "";
                             ?>
                             <tr>
                                 <td><?php echo $display_items['id'] ?></td>
-                                <td><?php echo $display_name ?></td>
+                                <td><a href="member_detail.php?member_id=<?php echo $display_items['id'] ?>"><?php echo $display_name ?></a></td>
                                 <td><?php echo $display_gender ?></td>
                                 <td><?php echo $display_address ?></td>
                                 <td><?php echo $display_items['created_at'] ?></td>
                                 <td><a href="member_edit.php?member_id=<?php echo $display_items['id'] ?>">編集</a></td>
+                                <td><a href="member_detail.php?member_id=<?php echo $display_items['id'] ?>">詳細</a></td>
                             </tr>
                         <?php endforeach; ?>
                     </table>
