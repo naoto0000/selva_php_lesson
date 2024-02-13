@@ -34,7 +34,9 @@ if ($page == 1 || $page == $max_page) {
     $range = 1;
 }
 
+// 編集関連のセクションを初期化
 $_SESSION['member_edit'] = "";
+$_SESSION['edit_display'] = "";
 
 ?>
 
