@@ -125,26 +125,26 @@ $_SESSION['member_edit'] = "";
 
                 <div class="member_display">
                     <table>
-                        <?php if ($_SESSION['search_order'] == 1) : ?>
-                            <tr>
-                                <th>ID<input type="submit" name="search_order_submit" value="▲" class="search_order_submit"></th>
-                                <th>氏名</th>
-                                <th>性別</th>
-                                <th>住所</th>
-                                <th>登録日時<input type="submit" name="search_order_submit" value="▲" class="search_order_submit"></th>
-                                <th>編集</th>
-                            </tr>
-                        <?php else : ?>
-                            <tr>
-                                <th>ID<input type="submit" name="search_order_submit" value="▼" class="search_order_submit"></th>
-                                <th>氏名</th>
-                                <th>性別</th>
-                                <th>住所</th>
-                                <th>登録日時<input type="submit" name="search_order_submit" value="▼" class="search_order_submit"></th>
-                                <th>編集</th>
-                                <th>詳細</th>
-                            </tr>
-                        <?php endif; ?>
+                        <tr>
+                            <?php if ($_SESSION['search_order_id'] == 1) : ?>
+                                <th>ID<input type="submit" name="search_order_submit_id" value="▲" class="search_order_submit"></th>
+                            <?php else : ?>
+                                <th>ID<input type="submit" name="search_order_submit_id" value="▼" class="search_order_submit"></th>
+                            <?php endif; ?>
+
+                            <th>氏名</th>
+                            <th>性別</th>
+                            <th>住所</th>
+
+                            <?php if ($_SESSION['search_order_created'] == 1) : ?>
+                                <th>登録日時<input type="submit" name="search_order_submit_created" value="▲" class="search_order_submit"></th>
+                            <?php else : ?>
+                                <th>登録日時<input type="submit" name="search_order_submit_created" value="▼" class="search_order_submit"></th>
+                            <?php endif; ?>
+
+                            <th>編集</th>
+                            <th>詳細</th>
+                        </tr>
                         <?php foreach ($display_result as $display_items) : ?>
                             <?php
                             $display_name = $display_items['name_sei'] . $display_items['name_mei'];
